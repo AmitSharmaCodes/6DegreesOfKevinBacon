@@ -45,6 +45,10 @@ public:
    *  behind this, see the assignment writeup.
    */ // TODO
   virtual bool insert(const Data& item) {
+	  if (find(item))
+		  return false;
+	  
+
 
   }
 
@@ -57,6 +61,8 @@ public:
    *  behind this, see the assignment writeup.
    */ // TODO
   iterator find(const Data& item) const {
+
+
 
   }
 
@@ -83,7 +89,7 @@ public:
   /** Return an iterator pointing to the first item in the BST (not the root).
    */ // TODO
   iterator begin() const {
-
+	  return type
   }
 
   /** Return an iterator pointing past the last item in the BST.
