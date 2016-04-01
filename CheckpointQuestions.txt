@@ -1,0 +1,11 @@
+1. 
+
+In the file BSTNode.hpp you can see that the signature of the constructor is
+
+BSTNode(const Data & d) : data(d)
+
+Explain why parameter d must be a constant lvalue reference, rather than just a non-constant lvalue reference (assuming we do not have another overloaded constructor).
+
+2.
+
+ Notice that the BSTIterator class overloads both the pre-increment and the post-increment operators.  Why does the post-increment operator take an argument?  And why does the post-increment operator return a copy of the BSTIterator while the pre-increment operator returns a reference?
