@@ -11,7 +11,6 @@ protected:
 
   /** Pointer to the root of this BST, or 0 if the BST is empty */
   BSTNode<Data>* root;
-
   /** Number of Data items stored in this BST. */
   unsigned int isize;
 
@@ -46,23 +45,34 @@ public:
    */ // TODO
   virtual bool insert(const Data& item) {
 	  BSTNode<Data>* current = root;
-	  if (root != NULL) {
+	  BSTNode<Data>* next = root;
+	  if (root == NULL) {
 		  root = new BSTNode<Data>(item);
 		  return true;
 	  }
-	  while (current != NULL)
+	  while (next != NULL)
 	  {
+		  current = next;
 		  if (current->data < item)
-			  current = current->right;
+			  next = current->right;
 		  else if (item < current->data)
-			  current = current->left;
+			  next = current->left;
 		  else
 		  {
 			  //if its not less than, and if its not great than, than it must be equal to
 			  return false;
 		  }
 	  }
-	  current = new BSTNode<Data>(item);
+	  if (current->data < item) {
+		  current->right = new BSTNode<Data>(item);
+		  current->right->parent = current;
+	  }
+	  else
+	  {
+		  current->left = new BSTNode<Data>(item);
+		  current->left->parent = current;
+	  }
+
 	  return true;
   }
 
