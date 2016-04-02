@@ -17,10 +17,14 @@ int main() {
 	b.insert(10);
 	b.insert(4);
 	b.insert(19);
+	b.insert(10);
 	b.insert(21);
 	b.insert(6);
+	b.insert(6);
 	b.insert(14);
-
+	b.insert(10);
+	b.insert(4);
+	b.inorder();
 	return 0;
 //  /* Create an STL vector of some ints */
 //  /*test*/

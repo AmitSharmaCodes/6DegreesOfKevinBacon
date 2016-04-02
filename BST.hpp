@@ -57,11 +57,8 @@ public:
 			  next = current->right;
 		  else if (item < current->data)
 			  next = current->left;
-		  else
-		  {
-			  //if its not less than, and if its not great than, than it must be equal to
+		  else 
 			  return false;
-		  }
 	  }
 	  if (current->data < item) {
 		  current->right = new BSTNode<Data>(item);
@@ -138,6 +135,12 @@ private:
       Implementing inorder and deleteAll base on the pseudo code is an easy way to get started.
    */ // TODO
   void inorder(BSTNode<Data>* n) const {
+	  if (n == NULL)
+		  return;
+
+	  inorder(n->left);
+	  cout << (*n) <<endl;
+	  inorder(n->right);
     /* Pseudo Code:
       if current node is null: return;
       recursively traverse left sub-tree
