@@ -45,11 +45,25 @@ public:
    *  behind this, see the assignment writeup.
    */ // TODO
   virtual bool insert(const Data& item) {
-	  if (find(item))
-		  return false;
-	  
-
-
+	  BSTNode<Data>* current = root;
+	  if (root != NULL) {
+		  root = new BSTNode<Data>(item);
+		  return true;
+	  }
+	  while (current != NULL)
+	  {
+		  if (current->data < item)
+			  current = current->right;
+		  else if (item < current->data)
+			  current = current->left;
+		  else
+		  {
+			  //if its not less than, and if its not great than, than it must be equal to
+			  return false;
+		  }
+	  }
+	  current = new BSTNode<Data>(item);
+	  return true;
   }
 
 
@@ -63,33 +77,34 @@ public:
   iterator find(const Data& item) const {
 
 
-
+	  return NULL;
   }
 
   
   /** Return the number of items currently in the BST.
    */ // TODO
   unsigned int size() const {
+	  return 0;
 
   }
   
   /** Return the height of the BST.
    */ // TODO
   unsigned int height() const {
-
+	  return 0;
   }
 
 
   /** Return true if the BST is empty, else false.
    */ // TODO
   bool empty() const {
-
+	  return false;
   }
 
   /** Return an iterator pointing to the first item in the BST (not the root).
    */ // TODO
   iterator begin() const {
-	  return type
+	   return typename BST<Data>::iterator(0);
   }
 
   /** Return an iterator pointing past the last item in the BST.

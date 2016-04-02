@@ -27,7 +27,7 @@ public:
    ** or 0 if there is none.
    */ // TODO
   BSTNode<Data>* successor() {
-
+	  return NULL;
   }
 
 }; 
