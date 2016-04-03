@@ -6,6 +6,14 @@ BSTNode(const Data & d) : data(d)
 
 Explain why parameter d must be a constant lvalue reference, rather than just a non-constant lvalue reference (assuming we do not have another overloaded constructor).
 
+Answer: If a rvalue is passed into the function there will be an error for BSTNode(Data & D), because there would be a reference to a temperory value and then you might try to change the value of something that is temperory which is not allowed. So, BSTNode(Data & D) is just for lvalues that you want to edit. In our case we will not be changing the incoming data so it should be a const reference, which also allows for the ability to accept rvalues. 
+
 2.
 
  Notice that the BSTIterator class overloads both the pre-increment and the post-increment operators.  Why does the post-increment operator take an argument?  And why does the post-increment operator return a copy of the BSTIterator while the pre-increment operator returns a reference?
+
+Answer: There is an int argument for the post increment to distiquish it from the pre increment operator, in short it is a dummy parameter for the sake of identification. 
+
+post-increment returns a copy because it returns an iterator in the current position before it gets incremented, thus a copy must be so that it can maintain two states, the incremented state and the state before being incremented which is returned
+
+while the pre increment operator returns the iterator of the state after the incremation so it is more efficient to pass a reference back instead of doing an un-needed copy.  
