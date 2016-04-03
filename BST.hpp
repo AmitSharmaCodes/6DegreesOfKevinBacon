@@ -46,8 +46,11 @@ public:
   virtual bool insert(const Data& item) {
 	  BSTNode<Data>* current = root;
 	  BSTNode<Data>* next = root;
+	  unsigned int currentheight = 1;
 	  if (root == NULL) {
 		  root = new BSTNode<Data>(item);
+		  ++isize;
+		  iheight = 1;
 		  return true;
 	  }
 	  while (next != NULL)
@@ -59,17 +62,21 @@ public:
 			  next = current->left;
 		  else 
 			  return false;
+
+		  ++currentheight;
 	  }
 	  if (current->data < item) {
 		  current->right = new BSTNode<Data>(item);
 		  current->right->parent = current;
+
 	  }
 	  else
 	  {
 		  current->left = new BSTNode<Data>(item);
 		  current->left->parent = current;
 	  }
-
+	  ++isize;
+	  iheight = std::max<unsigned int>(iheight, currentheight);
 	  return true;
   }
 
@@ -91,20 +98,22 @@ public:
   /** Return the number of items currently in the BST.
    */ // TODO
   unsigned int size() const {
-	  return 0;
+	  return isize;
 
   }
   
   /** Return the height of the BST.
    */ // TODO
   unsigned int height() const {
-	  return 0;
+	  return iheight;
   }
 
 
   /** Return true if the BST is empty, else false.
    */ // TODO
   bool empty() const {
+	  if (isize == 0)
+		  return true;
 	  return false;
   }
 
