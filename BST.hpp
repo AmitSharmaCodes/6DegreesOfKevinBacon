@@ -160,6 +160,12 @@ private:
   /** do a postorder traversal, deleting nodes
    */ // TODO
   static void deleteAll(BSTNode<Data>* n) {
+
+	  if (n == NULL)
+		  return;
+	  deleteAll(n->left);
+	  deletaAll(n->right);
+	  delete n;
     /* Pseudo Code:
       if current node is null: return;
       recursively delete left sub-tree
