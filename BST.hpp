@@ -139,7 +139,7 @@ private:
 		  return;
 
 	  inorder(n->left);
-	  std::cout << (*n) <<std::endl;
+	  std::cout << n->data << std::endl;
 	  inorder(n->right);
     /* Pseudo Code:
       if current node is null: return;
