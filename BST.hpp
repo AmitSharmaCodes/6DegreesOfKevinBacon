@@ -32,7 +32,9 @@ public:
       Delete every node in this BST.
    */ // TODO
   virtual ~BST() {
-
+	  deleteAll(root);
+	  isize = 0;
+	  iheight = 0;
   }
 
   /** Given a reference to a Data item, insert a copy of it in this BST.
@@ -89,9 +91,20 @@ public:
    *  behind this, see the assignment writeup.
    */ // TODO
   iterator find(const Data& item) const {
+	  BSTNode<Data>* current = root; 
+	  BSTNode<Data>* next = root;
 
-
-	  return NULL;
+	  while (next != NULL)
+	  {
+		  current = next;
+		  if (current->data < item)
+			  next = current->right;
+		  else if (item < current->data)
+			  next = current->left;
+		  else 
+			return typename BST<Data>::iterator(current);
+	  }
+	  return end();
   }
 
   
@@ -120,7 +133,7 @@ public:
   /** Return an iterator pointing to the first item in the BST (not the root).
    */ // TODO
   iterator begin() const {
-	   return typename BST<Data>::iterator(0);
+	   return typename BST<Data>::iterator(first(root));
   }
 
   /** Return an iterator pointing past the last item in the BST.
@@ -137,6 +150,16 @@ public:
 
 
 private:
+	///**Recursive height 'helper' function
+
+	///** gets the height from the input node to the bottom of the tree
+	//if the input is the root, you will get the height of the whole tree
+	//*/
+	//unsigned int height(BSTNode<Data>* n)  const {
+	//	if (n == NULL)
+	//		return 0;
+	//	return 1 + std::max(height(n->left), height(n->right));
+	//}
 
   /** Recursive inorder traversal 'helper' function */
 
@@ -173,7 +196,7 @@ private:
 	  if (n == NULL)
 		  return;
 	  deleteAll(n->left);
-	  deletaAll(n->right);
+	  deleteAll(n->right);
 	  delete n;
     /* Pseudo Code:
       if current node is null: return;

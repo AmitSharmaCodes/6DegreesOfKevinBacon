@@ -27,7 +27,38 @@ public:
    ** or 0 if there is none.
    */ // TODO
   BSTNode<Data>* successor() {
-	  return NULL;
+	  //if this node has a right child then the successor is all the way
+	  //left from the right child 
+	  if (right != NULL)
+	  {
+		  BSTNode<Data>* leftest = right;
+		  BSTNode<Data>* next_leftest = right; //go one past leftest to the nul
+		  while (next_leftest != NULL)
+		  {
+			  leftest = next_leftest;
+			  next_leftest = leftest->left;
+		  }
+		  return leftest;
+		  //go all the way to the left
+	  }
+	  //if the right child is null then the successor will be the parent,
+	  //if this node is the left child of the parent
+	  //if this child is not the left child, keep looking at parents
+	  // til it is left, if you go all the way to the root, and its not
+	  // a left child then its greatest element and the successor should
+	  // be null
+	  BSTNode<Data>* leftParent = parent;
+	  BSTNode<Data>* leftChild = this;
+	  while (leftParent != NULL && leftParent->left != leftChild)
+	  {
+		  leftChild = leftParent;
+		  leftParent = leftParent->parent;
+	  }
+	  if (leftParent == NULL)
+		  return 0;
+
+	  return leftParent;
+
   }
 
 }; 
@@ -43,6 +74,7 @@ std::ostream & operator<<(std::ostream& stm, const BSTNode<Data> & n) {
   stm << "; d:" << n.data;                    // its data field
   stm << ']';
   return stm;
+
 }
 
 #endif // BSTNODE_HPP

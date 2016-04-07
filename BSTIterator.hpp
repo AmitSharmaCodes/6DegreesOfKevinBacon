@@ -17,7 +17,7 @@ public:
    *  in this BSTIterator.
    */ // TODO
   BSTIterator(BSTNode<Data>* curr) {
-
+	  this->curr = curr;
   }
 
   /** Dereference operator. */
@@ -40,12 +40,12 @@ public:
 
   /** Equality test operator. */ // TODO
   bool operator==(BSTIterator<Data> const & other) const {
-	  return false;
+	  return curr == other.curr;
   }
 
   /** Inequality test operator. */ // TODO
   bool operator!=(BSTIterator<Data> const & other) const {
-	  return false;
+	  return curr != other.curr;
   }
 
 };
