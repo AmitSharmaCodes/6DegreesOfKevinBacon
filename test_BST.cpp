@@ -13,29 +13,6 @@ using namespace std;
  * Author: P. Kube (c) 2013
  */
 int main() {
-	//BST<int> b;
-	//b.insert(10);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(4);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(19);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(10);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(21);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(6);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(6);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(14);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(10);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.insert(4);
-	//cout << "Height: " << b.height() << " Size: " << b.size() << endl;
-	//b.inorder();
-	//return 0;
   /* Create an STL vector of some ints */
   /*test*/
   vector<int> v;
