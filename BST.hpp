@@ -48,11 +48,11 @@ public:
   virtual bool insert(const Data& item) {
 	  BSTNode<Data>* current = root;
 	  BSTNode<Data>* next = root;
-	  unsigned int currentheight = 1;
+	  unsigned int currentheight = 0;
 	  if (root == NULL) {
 		  root = new BSTNode<Data>(item);
 		  ++isize;
-		  iheight = 1;
+		  iheight = 0;
 		  return true;
 	  }
 	  while (next != NULL)

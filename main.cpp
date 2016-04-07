@@ -74,6 +74,33 @@ int main(int argc, char* argv[])
 
 	//TODO 
 	//main function implementation should go here
+
+	BST<string> b;
+	string s;
+
+	for (int i = 0; i < len; i++) {
+		getline(in, s);
+		b.insert(s);
+	}
+	size = b.size();
+	height = b.height();
+	b.inorder();
+	cout << "Size of tree: " << size << "\n";
+	cout << "Height of tree: " << height << "\n";
+	string input;
+	do
+	{
+		cout << "Enter actor/actress name: " << "\n";
+		getline(cin, input);
+		auto iter = b.find(input);
+		if(b.find(input) == b.end())
+			cout << name << " NOT found" << "\n";
+		else
+			cout << name << " found!" << "\n";
+		cout << "Search again? (y/n)" << "\n";
+		getline(cin, input);
+	} while (input == "y" || input == "Y");
+
 	
 	if(in.is_open())
 	{
