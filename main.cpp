@@ -51,8 +51,7 @@ int main(int argc, char* argv[])
 
 	//Open file 
 	ifstream in;
-	in.open(argv[1], ios::binary);
-
+	in.open(argv[1], ios::binary); 
 	//Check if input file was actually opened
 	if(!in.is_open()) 
 	{
@@ -75,25 +74,37 @@ int main(int argc, char* argv[])
 	//TODO 
 	//main function implementation should go here
 
-	BST<string> b;
+	BST<std::string> b;
 	string s;
-
+	
 	for (int i = 0; i < len; i++) {
+		//reads in line
 		getline(in, s);
-		b.insert(s);
+		//the ending of my strings had \r on windows so I had
+		//to remove them
+		s.erase(remove(s.begin(), s.end(), '\r'), s.end());
+		//adding empty strings to the list doesnt make sense
+		//so if there are random spaces in the input file
+		//blanks will not be added to the tree
+		if(s.length() > 0)
+			b.insert(s);
 	}
 	size = b.size();
 	height = b.height();
-	b.inorder();
+//	b.inorder();
+	//output size and height
 	cout << "Size of tree: " << size << "\n";
 	cout << "Height of tree: " << height << "\n";
 	string input;
 	do
 	{
+		//prompt the user
 		cout << "Enter actor/actress name: " << "\n";
 		getline(cin, input);
+		name = input;
+		//get an iterator and if its not null then you found it
 		auto iter = b.find(input);
-		if(b.find(input) == b.end())
+		if(iter == b.end())
 			cout << name << " NOT found" << "\n";
 		else
 			cout << name << " found!" << "\n";
